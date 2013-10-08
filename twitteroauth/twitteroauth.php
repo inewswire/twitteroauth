@@ -109,7 +109,6 @@ class TwitterOAuth {
   function getAccessToken($oauth_verifier) {
     $parameters = array();
     $parameters['oauth_verifier'] = $oauth_verifier;
-    var_dump($this->token);
     $request = $this->oAuthRequest($this->accessTokenURL(), 'GET', $parameters);
     $token = OAuthUtil::parse_parameters($request);
     $this->token = new OAuthConsumer($token['oauth_token'], $token['oauth_token_secret']);
@@ -192,8 +191,6 @@ class TwitterOAuth {
    * @return API results
    */
   function http($url, $method, $postfields = NULL) {
-    var_dump($url);
-    var_dump($postfields);
     $this->http_info = array();
     $ci = curl_init();
     /* Curl settings */
